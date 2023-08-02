@@ -10,8 +10,71 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container-fluid col-12">
+      <div class="row justify-content-center">
+          <div class="container-fluid sticky-top px-0">
+            <div class="container-fluid px-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+                
+                    <a class="navbar-brand" href="#">Archivio digitale dell'anarchismo</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto align-middle text-center">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Gestionale
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Modifica Metadati</a>
+                                    <a class="dropdown-item" href="https://testarchivio.anarchismo.net/publish/pending">Testi pendenti</a>
+                                    <a class="dropdown-item" href="#">Genera credenziali</a>
+                                    <a class="dropdown-item" href="#">Genera report</a>
+                                </div>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="https://testarchivio.anarchismo.net/action/text/new">Crea voce</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Prestiti</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.rebal.info/vufind/Content/adesioni">Elenco degli archivi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://amusewiki.org/special/index">Istruzioni</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Cerca nelle istruzioni" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <form action="{% url 'index' %}">
+                <div class="container-fluid px-0 sticky-top">
+                  <div class="container-fluid text-center px-0" style="max-width:978px">
+                    <div class="p-3 mb-2 bg-primary">
+                       <div class="row">
+                          <div class="d-grid gap-2 col-5 col-md-6 mx-auto my-2">
+                                       <button class="btn btn-light btn-lg btn-block" type="form-control">{{ _("Cerca") }}</button>
+                           </div>
+                           <div class="d-grid gap-2 col-5 col-md-6 mx-auto my-2">
+                                       <a class="btn btn-light btn-lg btn-block" href="http://127.0.0.1:8000/search/" role="button">Ultime voci aggiunte</a>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+            </form>
+        </div>
         <div class="col-12">
           {% block content %}
           {% endblock %}

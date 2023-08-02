@@ -6,11 +6,546 @@ Search: {{ querystring }}
 
 {% block content %}
 <form action="{% url 'index' %}">
-  <div class="row mt-3 mb-3 g-3" id="search-facets">
-    <div class="col-12 input-group mb-3">
-      <input class="form-control" type="text" name="query" value="{% if querystring %}{{ querystring }}{% endif %}" placeholder="Search">
-      <button class="btn btn-primary" type="submit">{{ _("Search") }}</button>
+ <div class="container-fluid px-0 sticky-top">
+   <div class="container-fluid text-center px-0" style="max-width:978px">
+     <div class="p-3 mb-2 bg-primary">
+        <div class="row">
+           <div class="d-grid gap-2 col-5 col-md-6 mx-auto my-2">
+                        <button class="btn btn-light btn-lg btn-block" type="form-control">{{ _("Cerca") }}</button>
+            </div>
+            <div class="d-grid gap-2 col-5 col-md-6 mx-auto my-2">
+                        <a class="btn btn-light btn-lg btn-block" href="http://127.0.0.1:8000/search/" role="button">Ultime voci aggiunte</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+        <div class="container my-3 text-center" style="max-width: 978px;">
+            <div class="row justify-content-sm-center">
+                <div class="col-12 col-sm-4">
+                    <button type="button" class="btn btn-light btn-lg my-2 btn-block">Crea voce</button>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <button type="button" class="btn btn-light btn-lg my-2 btn-block">Gestionale</button>
+                </div>
+            </div>
+            <div class="row justify-content-sm-center">
+                <div class="col-12 col-sm-4">
+                    <button type="button" class="btn btn-light btn-lg my-2 btn-block">Prestiti</button>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <button type="button" class="btn btn-light btn-lg my-2 btn-block">Istruzioni</button>
+                </div>
+            </div>
+            <div class="row justify-content-sm-center">
+                <div class="col-12 col-sm-8">
+                    <button type="button" class="btn btn-light btn-lg my-2 btn-block">Cerca libro cartaceo</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-3" style="max-width: 978px;">
+            
+
+                <div class="container-fluid my-2">
+                    <h5>Criteri di ricerca</h5>
+                </div>
+
+
+                <div class="container my-5 col-12 col-md-12 text-center">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <div class="row justify-content-sm-center">
+                            <div class="col-12 col-md-6">
+                                <label class="btn btn-light active my-2 btn-block btn-lg">
+                                    <input type="checkbox"> Anarchismo
+                                </label>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="btn btn-light active my-2 btn-block btn-lg">
+                                    <input type="checkbox"> Miscellanea
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container my-2 col-12 col-md-12 text-center">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <div class="row justify-content-sm-center">
+                            <div class="col-12 col-sm-4">
+                                <label class="btn btn-success active my-2 btn-block">
+                                    <input type="checkbox"> PDF + TXT
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label class="btn btn-warning active my-2 btn-block">
+                                    <input type="checkbox"> TXT
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label class="btn btn-danger active my-2 btn-block">
+                                    <input type="checkbox"> PDF
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <label class="btn btn-dark active my-2 btn-block">
+                                    <input type="checkbox"> Solo cartaceo
+                                </label>
+                            </div>
+                            <div class="col-12  col-sm-8 col-md-4">
+                                <label class="btn btn-primary active my-2 btn-block">
+                                    <input type="checkbox"> Traduzione in corso
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container  my-3">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 my-2">
+                            <h5 style="text-align:center">Lingua del testo</h5>
+                            <div class="row justify-content-center">
+                                <div class="col-3 mr-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="filter_language" type="checkbox" value="It" id="It_y">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Italiano
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Spagnolo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Tedesco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Francese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Inglese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Arabo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Ceco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Danese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Farsi
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Suomi
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Croato
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Curdo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 ml-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Portoghese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Russo
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Giapponese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Cinese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Macedone
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Olandese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Polacco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Albanese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Serbo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Svedese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Turco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Ucraino
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 my-2">
+                            <h5 style="text-align:center">Da tradurre in</h5>
+                            <div class="row justify-content-center">
+                                <div class="col-3 mr-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Italiano
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Spagnolo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Tedesco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Francese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Inglese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Arabo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Ceco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Danese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Farsi
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Suomi
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Croato
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Curdo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 ml-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Portoghese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Russo
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Giapponese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Cinese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Macedone
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Olandese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Polacco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Albanese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Serbo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Svedese
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Turco
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Ucraino
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="container-fluid my-3 pl-0">
+                    <h5>Completa o lascia vuoto per la ricerca casuale</h5>
+                </div>
+                <div class="form-row">
+                    <div class="col-12 col-md-8">
+                        <div class="input-group input-group-lg my-2" id="search-facets1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">Titolo</span>
+                            </div>
+                            <input type="text" class="form-control" name="filter_title" value="" aria-label="Inserire titolo del testo o numero del periodico" aria-describedby="inputGroup-sizing-lg" placeholder="Titolo del testo o numero del periodico">
+                        </div>
+                    </div>
+                    <div class="col-8 col-md-4">
+                        <div class="input-group input-group-lg my-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">ISSBN</span>
+                            </div>
+                            <input type="text" class="form-control" name="filter_ISSBN" value="" aria-label="Inserire ISSBN" aria-describedby="inputGroup-sizing-lg" placeholder="ISSBN">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+                <div class="row">
+                    <div class="col-12 col-md-5 my-2">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">Cognome</span>
+                            </div>
+                            <input type="text" class="form-control" name="filter_creator" value="{% if querystring %}{{ querystring }}{% endif %}" aria-label="Inserire Cognome" aria-describedby="inputGroup-sizing-lg" placeholder="Cognome">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 my-2">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">Nome</span>
+                            </div>
+                            <input type="text"  class="form-control"  name="filter_creator" value="{% if querystring %}{{ querystring }}{% endif %}" aria-label="Inserire Nome" aria-describedby="inputGroup-sizing-lg" placeholder="Nome">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-2 my-2">
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-dark active btn-block btn-lg">
+                                <input type="checkbox" name="filter_creator" value="xxxx"> Anonimo
+                            </label>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12 col-md-12 my-2">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">Altro</span>
+                            </div>
+                            <input type="text" class="form-control" name="filter_creator" aria-label="Inserire nome collettivo o titolo del periodico" aria-describedby="inputGroup-sizing-lg" placeholder="Nome collettivo / nome del gruppo / titolo della rivista o  del giornale">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group my-2">
+                    <label for="inputAddress">Casa Editrice</label>
+                    <input type="text" class="form-control" name="filter_editor" id="input_editrice" placeholder="Il nome della casa editrice">
+                </div>
+                <div class="container">
+                    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <div class="form-group">
+                                <label for="inputCity">Collana</label>
+                                <input type="text" class="form-control"  name="filter_collana"  id="input_collana" placeholder="Il nome della collana">
+                            </div>
+                        </div>
+                        <div class="col-8 col-md-4">
+                            <div class="form-group">
+                                <label for="inputState">Sottocollana</label>
+                                <input type="text" class="form-control"  name="filter_sottocollana" id="input_sottocollana" placeholder="Il nome della sottocollana">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group my-2">
+                    <label for="formControlRange">Anno di pubblicazione</label>
+                    <input type="range" class="form-control-range" id="formControlRange">
+                </div>
+                <div class="container row justify-content-md-center" style="max-width: 978px;">
+                    <div class="input-group my-2  col-12 col-md-8">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tempo</span>
+                        </div>
+                        <input type="text" class="form-control" name="filter_date" aria-label="Dall'anno" placeholder="dall'anno">
+                        <input type="text" class="form-control" name="filter_date" aria-label="All'anno" placeholder="all'anno">
+                    </div>
+                </div>
+
+                <div class="form-group my-2">
+                    <label for="formControlRange">Luogo</label>
+                    <input type="range" class="form-control-range" id="formControlRange">
+                </div>
+                <div class="container row justify-content-md-center" style="max-width: 978px;">
+                    <div class="input-group my-2  col-12 col-md-8">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Spazio</span>
+                        </div>
+                        <input type="text" aria-label="Città o paese" class="form-control" placeholder="Città o paese">
+                        <input type="text" aria-label="Distanza" class="form-control" placeholder="Distanza">
+                    </div>
+                </div>
+                <div class="container row justify-content-md-center text-center">
+                    <div class="btn-group-toggle my-2 col-12 col-md-8" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="checkbox"> Luogo di stampa
+                        </label>
+                        <label class="btn btn-primary active">
+                            <input type="checkbox"> Luogo citato
+                        </label>
+                    </div>
+                </div>
+
+            
+        </div>
+
+  <div class="row mt-3 mb-3 g-3" id="search-facets">
   </div>
   <div class="row" id="search-results">
     <div class="col-4">
@@ -36,26 +571,18 @@ Search: {{ querystring }}
     <div class="col-8">
       {% if matches  %}
       {% for res in matches %}
-      <div class="mb-3">
+      <div>
         <span>
-          <a href="{{ res.url }}"><strong>
+          <a href="{{ res.identifier }}"><strong>
             {% if res.creator %}
             {{ res.creator }}  —
             {% endif %}
             {{ res.title }}</strong></a>
           <small>[{{ res.language }}]</small>
         </span>
-        <ul>
-          {% for identifier in res.identifiers %}
-          <li>{{ identifier }}</li>
-          {% endfor %}
-        </ul>
-        <p>
-        </p>
         <p>
           {{ res.description }}
         </p>
-        <small><code>{{ res.oai_pmh_identifier }}</code></small>
       </div>
       {% endfor %}
       {% else %}
@@ -75,6 +602,12 @@ Search: {{ querystring }}
     </div>
   </div>
 </form>
+
+
+
+
+
+
 <h3 class="mt-5">Debug</h3>
 <pre>
 {% debug %}
